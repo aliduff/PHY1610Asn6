@@ -32,8 +32,13 @@ int main(int argc, char* argv[]){
 	fftw_execute(p);
 	fftw_destroy_plan(p);
 	*/
-	for (int i = 0; i<n; i++)
+	/*for (int i = 0; i<n; i++)
 		std::cout << norm(f[i]) << "," << norm(fhat[i]) << std::endl;
-	
+	*/
+	rvector<double> g1(4),g2(4);
+	g1 =  1,2,3,4;
+	g2 = 5,-3,2,1;
+	double C = correlation(g1,g2);	
+	std::cout << "The correlation is: " << C << std::endl;
 	return 0;
 }

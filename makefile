@@ -14,16 +14,19 @@ BLAS_LIB=${HOME}/OpenBLAS/lib/
 all: driver
 
 driver: ncReader.o fft_DGW.o driver.o
-	$(CXX) -L${NETCDF_LIB} -L${FFTW_LIB} ncReader.o fft_DGW.o driver.o -o driver ${LDLIBS}
+	$(CXX) -L${NETCDF_LIB} -L${FFTW_LIB} -L${BLAS_LIB} ncReader.o fft_DGW.o driver.o -o driver ${LDLIBS} -lopenblas
 
 driver.o: drivercode.cc
-	$(CXX) $(CXXFLAGS) drivercode.cc -c -o driver.o  
+	$(CXX) $(CXXFLAGS) -I${BLAS_INC} drivercode.cc -c -o driver.o  
+
+#MAKE A HELP DOCUMENTATION
+#================= MODULES ==============================#
 	
 ncReader.o: ncReader.cc ncReader.h
 	$(CXX) $(CXXFLAGS) -I${NETCDF_INC} ncReader.cc -c -o ncReader.o
 
 fft_DGW.o: fft_DGW.cc fft_DGW.h
-	$(CXX) $(CXXFLAGS) -I${FFTW_INC} fft_DGW.cc -c -o fft_DGW.o
+	$(CXX) $(CXXFLAGS) -I${FFTW_INC} -I${BLAS_INC} fft_DGW.cc -c -o fft_DGW.o
 
 clean: 
 	rm *.o

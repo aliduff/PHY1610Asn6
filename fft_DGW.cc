@@ -15,7 +15,7 @@ void fft_fast(const rvector<complex>& f, rvector<complex>& fhat, bool inverse)
 //	std::cout << "Computed FFT" << std::endl;
 }
 
-void power_spectrum(rvector<complex>& f, rvector<complex>& ps)
+void power_spectrum(rvector<complex>& f, rvector<double>& ps)
 {
 	int n = f.size();
 	double Fi;
@@ -23,4 +23,15 @@ void power_spectrum(rvector<complex>& f, rvector<complex>& ps)
 		Fi = norm(f[i]);
 		ps[i] = Fi*Fi;
 	}
+}
+
+double correlation(rvector<double>& g1, rvector<double>& g2)
+{
+	double C,D,F,G;
+	int N = g1.size();
+	D = cblas_ddot(N,g1.data(),1,g2.data(),1); //Dot product of g1 g2
+	F = cblas_ddot(N,g1.data(),1,g1.data(),1); //g1 dot g1
+	G = cblas_ddot(N,g2.data(),1,g2.data(),1); //g2 dot g2
+	C = D / std::sqrt(F*G) ;
+	return C;
 }
