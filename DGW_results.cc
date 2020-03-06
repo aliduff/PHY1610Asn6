@@ -4,7 +4,9 @@
 #include "DGW_results.h"
 #include <iostream>
 #include <rarrayio>
+#include <fstream>
 
+//Documentation found in .h
 rarray<int,1> findtop(rarray<double,1> Arr){
 	int N = Arr.size();
 	//Create index list
@@ -26,6 +28,7 @@ rarray<int,1> findtop(rarray<double,1> Arr){
 	return indexList;
 }
 
+//Documentation found in .h
 void swap_assist(rarray<double,1> Arr,rarray<int,1> index,int j){
 	double temp;
 	temp = Arr[j-1];
@@ -36,18 +39,21 @@ void swap_assist(rarray<double,1> Arr,rarray<int,1> index,int j){
 	index[j] = temp;
 }
 
-void write_results(rarray<double,1> correlation, rarray<int,1> samples){
-	std::cout << "The write_results method" << std::endl;
-	int N = 5;
+//Documentation found in .h
+void write_results(rarray<double,1> correlation, rarray<int,1> samples,int N){
 	std::string filebase = "detection";
+	std::ofstream file; //Open a text file to write to
+	file.open("Results.txt");
 	char spnum[50];
 	int check;
 	std::string samplename;
-	for(int i=0; i<N; i++){
+	for(int i=0; (i<N) and (i<correlation.size()); i++){
 		check = sprintf(spnum, "%02d",samples[i]);
 		samplename = filebase+spnum+".nc";
-		std::cout<< i+1 << " : "+samplename+" with correlation :"<<correlation[i] <<std::endl;
+		std::cout << samplename+" with correlation :"<< correlation[i] <<std::endl;
+		file << samplename+" with correlation :"<<correlation[i] <<std::endl;
 	}
+	file.close();
 }
 
 

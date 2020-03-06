@@ -9,9 +9,9 @@
 #include <netcdf>
 #include <complex>
 
-///@brief 
-///@param 
-///@returnv
+///@brief read the netcdf file that stores the gravitational wave data
+///@param filename the name of the file we want to open and process
+///@return the complex valued signal data
 rvector<std::complex<double>> read_ncFile(std::string filename);
 //
 #endif
