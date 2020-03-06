@@ -1,0 +1,5 @@
+detection20.nc with correlation :0.99222
+detection15.nc with correlation :0.967221
+detection01.nc with correlation :0.939055
+detection17.nc with correlation :0.896847
+detection02.nc with correlation :0.887038

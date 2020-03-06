@@ -47,6 +47,7 @@ void write_results(rarray<double,1> correlation, rarray<int,1> samples,int N){
 	char spnum[50];
 	int check;
 	std::string samplename;
+	std::cout << "The top " << N << " candidates in order of largest correlation coefficient" << std::endl;
 	for(int i=0; (i<N) and (i<correlation.size()); i++){
 		check = sprintf(spnum, "%02d",samples[i]);
 		samplename = filebase+spnum+".nc";

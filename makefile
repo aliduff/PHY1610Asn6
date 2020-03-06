@@ -37,7 +37,7 @@ DGW_analysis.o: DGW_analysis.cc DGW_analysis.h
 
 ## clean: Remove generated files
 clean: 
-	rm -f *.o *.txt DGW
+	rm -f *.o DGW
 
 ## help: display this help message
 help: makefile

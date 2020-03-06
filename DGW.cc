@@ -48,6 +48,8 @@ int main(int argc, char* argv[]){
 		power_spectrum(dhat,PS_d);
 		//Correlation value for detectionXX and Prediction
 		C[i] = correlation(PS_pgw,PS_d);
+		//Output the correlation coefficient
+		std::cout << samplename +" has correlation : " << C[i] << std::endl;
 	}
 	// ============= DETERMINE N MOST SIGNIFICANT ============= //
 	rarray<int,1> indexList;
