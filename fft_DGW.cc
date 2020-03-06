@@ -18,10 +18,12 @@ void fft_fast(const rvector<complex>& f, rvector<complex>& fhat, bool inverse)
 void power_spectrum(rvector<complex>& f, rvector<double>& ps)
 {
 	int n = f.size();
-	double Fi;
+	double F1,F2;
 	for(int i = 0; i<n; i++){
-		Fi = norm(f[i]);
-		ps[i] = Fi*Fi;
+		F1 = norm(f[i]);
+		F2 = (f[i]*conj(f[i])).real();
+		//std::cout << F1-F2 << std::endl;
+		ps[i] = F1;
 	}
 }
 
