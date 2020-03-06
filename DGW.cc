@@ -18,7 +18,7 @@
 int main(int argc, char* argv[]){
 	// ================ THE PREDICTED GW SIGNAL ================= //
 	rvector<std::complex<double>> pgw;
-	pgw = read_ncFile("./gwdata/GWprediction.nc");
+	pgw = read_ncFile("/scinet/course/phy1610/gwdata/GWprediction.nc");
 	int n = pgw.size();
 	// Compute the fft of the Predicted Gravity Wave Signal
 	rvector<std::complex<double>> pgwhat(n);
@@ -34,7 +34,7 @@ int main(int argc, char* argv[]){
 	rvector<double> PS_d(n); //Power spectrum
 	rarray<double,1> C(32);	//Store the Correlation coefficients
 	
-	std::string filebase = "./gwdata/detection"; // xx.nc added
+	std::string filebase = "/scinet/course/phy1610/gwdata/detection"; // xx.nc added
 	char spnum[50]; //character buffer stream
 	int check; //Check if filename generates properly
 	std::string samplename; //which detection we are looking at
